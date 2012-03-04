@@ -1,6 +1,14 @@
 CtoToolbox::Application.routes.draw do
 
-   match "/auth/twitter/callback" => "sessions#create"
+  get "user/list"
+
+  get "user/disable"
+
+  get "user/favorites"
+
+  get "user/tolearn"
+
+  match "/auth/twitter/callback" => "sessions#create"
   resources :users
   
   # The priority is based upon order of creation:
