@@ -10,6 +10,10 @@ CtoToolbox::Application.routes.draw do
 
   match "/auth/twitter/callback" => "sessions#create"
   resources :users
+
+  resources :tools
+  match 'tools_search' => 'Tools#search_by_name', :as => :tools_search_by_name, :via => "get"
+
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

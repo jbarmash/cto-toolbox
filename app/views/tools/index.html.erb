@@ -1,0 +1,33 @@
+<h1>Listing tools</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th>Public</th>
+    <th>Url</th>
+    <th>Cost</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tools.each do |tool| %>
+  <tr>
+    <td><%= tool.name %></td>
+    <td><%= tool.description %></td>
+    <td><%= tool.category %></td>
+    <td><%= tool.public %></td>
+    <td><%= tool.url %></td>
+    <td><%= tool.cost %></td>
+    <td><%= link_to 'Show', tool %></td>
+    <td><%= link_to 'Edit', edit_tool_path(tool) %></td>
+    <td><%= link_to 'Destroy', tool, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tool', new_tool_path %>
