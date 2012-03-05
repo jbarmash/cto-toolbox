@@ -5,7 +5,17 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+
+group :development do
+  gem 'sqlite3', '1.3.5'
+end
+group :test do
+  gem 'sqlite3', '1.3.5'
+end
+
+#gem 'sqlite3', :group => [:development, :test]
+
+#gem 'mysql'
 
 
 # Gems used only for assets and not required
@@ -19,6 +29,10 @@ end
 gem 'jquery-rails'
 
 gem 'omniauth'
+
+gem 'markable' # https://github.com/chrome/markable
+
+gem 'acts-as-taggable-on', '~> 2.2.2' #https://github.com/mbleigh/acts-as-taggable-on
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
