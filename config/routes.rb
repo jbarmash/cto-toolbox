@@ -4,6 +4,8 @@ CtoToolbox::Application.routes.draw do
 
   get "user/disable"
 
+  get "static_pages/home"
+
   get "user/favorites"
 
   get "user/tolearn"
