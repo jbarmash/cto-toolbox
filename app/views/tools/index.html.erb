@@ -1,22 +1,43 @@
-<h1>Listing tools</h1>
+<h1>All Tools</h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Category</th>
-    <th>Public</th>
-    <th>Url</th>
-    <th>Cost</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>My Toolbox</h1>
 
-<% @tools.each do |tool| %>
+<h1>My Starred</h1>
+
+  <% @tools.each do |tool| %>
+
+   <hr>
+
+<div class='bit row'>
+<div class='row'>
+
+<!--
+<div class='span8 row header'>
+  <div class='vote-box'> <i bit_id='306' class='icon-arrow-up upvote'></i> <div class='vote-count'>3</div> <i bit_id='306' class='icon-arrow-down downvote'></i>
+</div>
+-->
+
+ <div class='title'>
+ <%= link_to tool.name, tool %> (<%= link_to 'Edit', edit_tool_path(tool) %>)
+
+    <div class='tags'>
+      <% tool.tag_list.each do |tag| %>
+      <%= link_to tag, tag, :class => 'label label-info tag' %> 
+      <% end %>
+    </div> <!--tags-->
+ </div> <!--title-->
+ </div> <!--row-->
+</div> <!--bit row-->
+
+<br/>
+<div class='row'>
+<div class='span12 code'>
+   <pre class='prettyprint'> Description: <%= tool.description %> </pre>
+</div>
+</div>
+
+<!--
   <tr>
-    <td><%= tool.name %></td>
-    <td><%= tool.description %></td>
     <td><%= tool.category %></td>
     <td><%= tool.public %></td>
     <td><%= tool.url %></td>
@@ -24,9 +45,12 @@
     <td><%= link_to 'Show', tool %></td>
     <td><%= link_to 'Edit', edit_tool_path(tool) %></td>
     <td><%= link_to 'Destroy', tool, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+</tr>
+-->
 <% end %>
+<!--
 </table>
+--%>
 
 <br />
 

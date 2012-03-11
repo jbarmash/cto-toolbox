@@ -1,14 +1,15 @@
 CtoToolbox::Application.routes.draw do
 
-  get "user/list"
-
-  get "user/disable"
-
   get "static_pages/home"
 
-  get "user/favorites"
+  get "user/list"
+  get "user/disable"
+ # get "user/set_current_user/:id"
+ #// get "user/:id/favorites"
+ #// get "user/:id/tolearn"
+ #// get :set_current_user, on: :member
 
-  get "user/tolearn"
+  match 'users/:id/set_current_user' => 'users#set_current_user', :as => 'user_set_current_user', :via => "get"
 
   match "/auth/twitter/callback" => "sessions#create"
   resources :users

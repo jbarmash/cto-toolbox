@@ -12,6 +12,29 @@ class UsersController < ApplicationController
   def list
   end
 
+  def set_current_user
+    @user = User.find(params[:id])
+    if @user 
+       session[:current_user] = @user.id
+       puts "Setting user #{@user}"
+       puts "Setting user #{@user}"
+       puts "Setting user #{@user}"
+       flash[:notice] = "Set user #{@user} as current" 
+       redirect_to(users_path)
+    else
+
+
+       flash[:notice] = "Did not find the user with id #{params[:id]}"
+       redirect_to(users_path)
+    end
+  end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+
+
   def disable
   end
 

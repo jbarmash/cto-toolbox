@@ -25,3 +25,29 @@ ul.ui-autocomplete {
   }
 } 
 
+
+.title {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-sefif;
+    line-height:18px;
+    font-size: 1.4em;
+    a {
+      color: #0088CC;
+      .label {
+
+
+     }
+    }
+}
+
+.label-info {
+    background-color: #3A87AD;
+}
+.tags .label {
+    color: #FFFFFF;
+    border-radius: 3px 3px 3px 3px;
+    font-size: 9.75px;
+    font-weight: bold;
+    padding: 1px 3px 2px;
+    text-transform: uppercase;
+}
+

@@ -12,6 +12,8 @@
     <td><%= user.name %></td>
     <td><%= user.provider %></td>
     <td><%= user.uid %></td>
+    
+    <td><%= link_to "set user as current", user_set_current_user_path(user) %></td>
   </tr>
 <% end %>
 </table>
