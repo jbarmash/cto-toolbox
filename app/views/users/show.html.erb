@@ -3,7 +3,34 @@
 <p>
   <b>Name:</b>
   <%= @user.name %>
+  </p>
+
+<p>
+  <b>Toolbox:</b>
+  <% if @user.tools.exists? %>
+      <% @user.tools.each do |tool| %>
+   <hr>
+<div class='bit '>
+<div class=''>
+
+ <div class='title'>
+    <%= link_to tool.name, tool %> <div class='tags'>
+      <% tool.tag_list.each do |tag| %>
+          <%= link_to tag, tool_filter_by_tag_path(tag), :class => 'label label-info tag' %> 
+      <% end %>
+    </div> <!--tags-->
+ </div> <!--title-->
+ </div> <!--row-->
+</div> <!--bit row-->
+
+
+<% end %>
+<% else %>
+      No Tools Defined Yet
+<% end %>
 </p>
 
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'All Users', users_path %>

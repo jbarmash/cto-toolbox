@@ -1,15 +1,22 @@
-<h1>All Tools</h1>
+<h1>Tools</h1>
 
-<h1>My Toolbox</h1>
+<center>
+<% if params[:tag_name] %>
+    <div class='tags'>
+       Filtered By <a class="label label-info tag" ><%= params[:tag_name] %> </a> &nbsp;
+       Back To <%= link_to 'All Tools', tools_path, class:'label label-info tag' %>
 
-<h1>My Starred</h1>
+    </div> <!--tags-->
+    
+<% end %>
+</center>
 
+
+<%= link_to 'New Tool', new_tool_path %>
   <% @tools.each do |tool| %>
-
    <hr>
-
-<div class='bit row'>
-<div class='row'>
+<div class='bit '>
+<div class=''>
 
 <!--
 <div class='span8 row header'>
@@ -18,18 +25,22 @@
 -->
 
  <div class='title'>
- <%= link_to tool.name, tool %> (<%= link_to 'Edit', edit_tool_path(tool) %>)
+ <%= link_to tool.name, tool %> (<%= link_to 'Edit', edit_tool_path(tool) %>)  
+ 
+ <%= link_to "Add To My Toolbox", tool_add_to_favorites_path(tool.id), :class => 'add_label' %>
+
 
     <div class='tags'>
       <% tool.tag_list.each do |tag| %>
-      <%= link_to tag, tag, :class => 'label label-info tag' %> 
+          <%= link_to tag, tool_filter_by_tag_path(tag), :class => 'label label-info tag' %> 
+
+
       <% end %>
     </div> <!--tags-->
  </div> <!--title-->
  </div> <!--row-->
 </div> <!--bit row-->
 
-<br/>
 <div class='row'>
 <div class='span12 code'>
    <pre class='prettyprint'> Description: <%= tool.description %> </pre>
@@ -54,4 +65,3 @@
 
 <br />
 
-<%= link_to 'New Tool', new_tool_path %>

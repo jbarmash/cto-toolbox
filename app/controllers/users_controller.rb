@@ -19,7 +19,7 @@ class UsersController < ApplicationController
        puts "Setting user #{@user}"
        puts "Setting user #{@user}"
        puts "Setting user #{@user}"
-       flash[:notice] = "Set user #{@user} as current" 
+       flash[:notice] = "Set user #{@user.name} as current" 
        redirect_to(users_path)
     else
 

@@ -4,6 +4,8 @@ class ToolsController < ApplicationController
   def index
     @tools = Tool.all
 
+    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tools }
@@ -86,4 +88,44 @@ class ToolsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  def add_to_favorites
+    logger.warn "BASSAFDASDFASF, param #{params}, session #{session}"
+    @tool = Tool.find(params[:id])
+    @user = User.find(session[:current_user])
+    #logger.warn "BASSAFDASDFASF, user #{@user}, tool #{@tool}, toolbo_tools: #{@user.toolbox_tools}"
+    #@user.set_mark :toolbox, @tool
+    @user.tools << @tool
+    @user.save
+
+    flash[:notice] = "Added Tool #{@tool.name} to #{@user.name}'s toolbox"
+
+    @tools = Tool.all
+    render 'index'
+  end
+
+#  def add_to_interested
+#    @tool = Tool.find(params[:id])
+#    @user = User.find(session[:current_user])
+#    logger.info "BASSAFDASDFASF, user #{@user}, tool #{@tool}"
+#    @user.interested_tools << @tool  
+#    render 'index'
+#  end
+
+
+  def filter_by_tag
+    @tools = Tool.tagged_with(params[:tag_name])
+    render 'index'
+    #match 'tools/tag/:tag_name' => 'tools#filter_by_tag', :as => 'tool_filter_by_tag', :via => "get"
+  end
+
+
+  def my_tools
+    @user = User.find(session[:current_user])
+    @tools = @user.tools 
+    flash[:notice] = "Showing #{@user.name}'s ToolBox"
+    render 'index'
+  end
+
+
 end

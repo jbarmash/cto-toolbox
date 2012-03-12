@@ -10,12 +10,18 @@ CtoToolbox::Application.routes.draw do
  #// get :set_current_user, on: :member
 
   match 'users/:id/set_current_user' => 'users#set_current_user', :as => 'user_set_current_user', :via => "get"
+  match 'tools/tag/:tag_name' => 'tools#filter_by_tag', :as => 'tool_filter_by_tag', :via => "get"
+  match 'tools/:id/favorites' => 'tools#add_to_favorites', :as => 'tool_add_to_favorites', :via => "get" #TODO: change to post, and possibly change for this to be off /users endpoint
 
   match "/auth/twitter/callback" => "sessions#create"
+
+  
   resources :users
+  resources :tags
 
   resources :tools
   match 'tools_search' => 'Tools#search_by_name', :as => :tools_search_by_name, :via => "get"
+  match 'mytools' => 'Tools#my_tools', :as => :my_tools, :via => "get"
 
   
   # The priority is based upon order of creation:

@@ -3,17 +3,22 @@
 <table>
   <tr>
     <th>Name</th>
+      <!--
     <th>Provider</th>
     <th>UID</th>
+    -->
   </tr>
 
 <% @users.each do |user| %>
   <tr>
-    <td><%= user.name %></td>
+      <td><%= link_to user.name, user_path(user) 
+          %></td>
+      <!--
     <td><%= user.provider %></td>
     <td><%= user.uid %></td>
+    -->
     
-    <td><%= link_to "set user as current", user_set_current_user_path(user) %></td>
+    <td>(<%= link_to "Set as current", user_set_current_user_path(user)%>)</td>
   </tr>
 <% end %>
 </table>
