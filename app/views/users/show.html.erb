@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Name:</b>
   <%= @user.name %>
@@ -11,6 +9,9 @@
       <% @user.toolboxes.each do |toolbox| %>
           <%= link_to toolbox.name, toolbox_path(toolbox) %> <br/> 
       <% end %>
+<% else %>
+      No ToolBoxes Defined Yet
+
   <% end %>
 </p>
 

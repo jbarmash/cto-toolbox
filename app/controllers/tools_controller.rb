@@ -102,6 +102,8 @@ class ToolsController < ApplicationController
         end
     end
 
+    
+ 
     #logger.info "user #{@user}, tool #{@tool}, toolbo_tools: #{@user.toolbox_tools}"
     #@user.set_mark :toolbox, @tool
     if !@user.tools.include? (@tool)
@@ -114,6 +116,16 @@ class ToolsController < ApplicationController
     @tools = Tool.all
     render 'index'
   end
+
+def remove_from_favorites
+    logger.warn "param #{params}, session #{session}"
+    flash[:notice] = "Removing Tools not implemented yet" 
+    @tools = Tool.all
+    render 'index'
+ end
+
+
+
 
 #  def add_to_interested
 #    @tool = Tool.find(params[:id])

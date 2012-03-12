@@ -16,6 +16,7 @@ CtoToolbox::Application.routes.draw do
   match 'users/:id/set_current_user' => 'users#set_current_user', :as => 'user_set_current_user', :via => "get"
   match 'tools/tag/:tag_name' => 'tools#filter_by_tag', :as => 'tool_filter_by_tag', :via => "get"
   match 'tools/:id/favorites' => 'tools#add_to_favorites', :as => 'tool_add_to_favorites', :via => "get" #TODO: change to post, and possibly change for this to be off /users endpoint
+  match 'tools/:id/favorites' => 'tools#remove_from_favorites', :as => 'tool_remove_from_favorites', :via => "delete" #TODO: change to post, and possibly change for this to be off /users endpoint
 
   match "/auth/twitter/callback" => "sessions#create"
 

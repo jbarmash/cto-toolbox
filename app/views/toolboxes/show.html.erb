@@ -1,43 +1,67 @@
-<p id="notice"><%= notice %></p>
+<h2> ToolBox <%= @toolbox.name %> </h2>
 
+<!--
 <p>
   <b>Name:</b>
   <%= @toolbox.name %>
 </p>
+-->
 
 <p>
   <b>Description:</b>
   <%= @toolbox.description %>
   </p>
 
-
-
 <p>
   <b>Url:</b>
   <%= @toolbox.url %>
 </p>
 
+<!--
 <p>
   <b>Type:</b>
   <%= @toolbox.type %>
 </p>
-
+-->
 <p>
-  <b>Users:</b>
-  <% @toolbox.users.each do |user| %>
-        <%= user.name %>, 
+  <b>Developers:</b>
+  <% [@toolbox.users[0]].each do |user| %>
+        <%= link_to user.name, user %> 
   <% end %>
   </p>
 
-<p>
-  <b>Tools:</b>
-  <% @toolbox.tools.each do |tool| %>
-        <%= tool.name %>, 
-  <% end %>
-  </p>
+  <h2> Tools </h2>
+
+<% @toolbox.tools.each do |tool| %>
+   <hr>
+<div class='bit '>
+<div class=''>
 
 
+ <div class='title'>
+ <%= link_to tool.name, tool %> 
+ 
+ <%= link_to "Remove From Toolbox", tool_remove_from_favorites_path(tool.id), :class => 'add_label' %>
 
+
+    <div class='tags'>
+      <% tool.tag_list.each do |tag| %>
+          <%= link_to tag, tool_filter_by_tag_path(tag), :class => 'label label-info tag' %> 
+
+
+      <% end %>
+    </div> <!--tags-->
+ </div> <!--title-->
+ </div> <!--row-->
+</div> <!--bit row-->
+
+
+<% end %>
+
+
+<br/>
+<br/>
+<br/>
 
 <%= link_to 'Edit', edit_toolbox_path(@toolbox) %> |
-<%= link_to 'Back', toolboxes_path %>
+<%= link_to 'Go To All Toolboxes', toolboxes_path %>

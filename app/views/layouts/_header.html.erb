@@ -5,14 +5,13 @@
           <nav>
 	  <ul class="nav pull-right">
 	        <%# link_to "Sign in with Twitter", "/auth/t" %>
-	        <li><%= link_to "All Tools",  tools_path %></li>
+	        <li><%= link_to "Tools",  tools_path %></li>
             <li><%= link_to "My Tools",  my_tools_path %></li>
-
             <li><%= link_to "Toolboxes",  toolboxes_path %></li>
             <% if session[:current_toolbox] 
                 current_toolbox = Toolbox.find(session[:current_toolbox])
             %>
-            <li><%=link_to "Toolbox: (#{current_toolbox.name})", toolbox_path(current_toolbox) %></li>
+            <li><%=link_to "TB: (#{current_toolbox.name})", toolbox_path(current_toolbox) %></li>
             <% end %>
 
             <li><%= link_to "Tags",    tags_path %></li>
