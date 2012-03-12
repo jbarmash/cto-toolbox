@@ -1,0 +1,29 @@
+<h1>Listing toolboxes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Url</th>
+    <th>Type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @toolboxes.each do |toolbox| %>
+  <tr>
+    <td><%= toolbox.name %></td>
+    <td><%= toolbox.description %></td>
+    <td><%= toolbox.url %></td>
+    <td><%= toolbox.type %></td>
+    <td><%= link_to 'Show', toolbox %></td>
+    <td><%= link_to 'Edit', edit_toolbox_path(toolbox) %></td>
+    <td><%= link_to 'Destroy', toolbox, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Toolbox', new_toolbox_path %>

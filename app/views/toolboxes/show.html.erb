@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @toolbox.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @toolbox.description %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @toolbox.url %>
+</p>
+
+<p>
+  <b>Type:</b>
+  <%= @toolbox.type %>
+</p>
+
+
+<%= link_to 'Edit', edit_toolbox_path(@toolbox) %> |
+<%= link_to 'Back', toolboxes_path %>

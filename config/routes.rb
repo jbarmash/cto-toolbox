@@ -1,5 +1,7 @@
 CtoToolbox::Application.routes.draw do
 
+  resources :toolboxes
+
   root :to => "static_pages#home"
 
   get "static_pages/home"
