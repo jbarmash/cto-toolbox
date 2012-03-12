@@ -1,25 +1,25 @@
-<h1>Listing toolboxes</h1>
+<h1>Listing Toolboxes</h1>
 
-<table>
-  <tr>
+<table class="table">
+  <thead>
     <th>Name</th>
-    <th>Description</th>
     <th>Url</th>
-    <th>Type</th>
+    <th>Owner(s)</th>
     <th></th>
     <th></th>
-    <th></th>
-  </tr>
+    <!--<th></th>-->
+  </thead>
 
 <% @toolboxes.each do |toolbox| %>
   <tr>
     <td><%= toolbox.name %></td>
-    <td><%= toolbox.description %></td>
     <td><%= toolbox.url %></td>
-    <td><%= toolbox.type %></td>
+    <td><%= toolbox.users.collect{ |user| user.name}.join(' ,') %></td>
+
+
     <td><%= link_to 'Show', toolbox %></td>
     <td><%= link_to 'Edit', edit_toolbox_path(toolbox) %></td>
-    <td><%= link_to 'Destroy', toolbox, confirm: 'Are you sure?', method: :delete %></td>
+    <!--<td><%= link_to 'Destroy', toolbox, confirm: 'Are you sure?', method: :delete %></td>-->
   </tr>
 <% end %>
 </table>

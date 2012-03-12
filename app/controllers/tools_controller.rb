@@ -90,12 +90,23 @@ class ToolsController < ApplicationController
   end
 
   def add_to_favorites
-    logger.warn "BASSAFDASDFASF, param #{params}, session #{session}"
+    logger.warn "param #{params}, session #{session}"
     @tool = Tool.find(params[:id])
     @user = User.find(session[:current_user])
-    #logger.warn "BASSAFDASDFASF, user #{@user}, tool #{@tool}, toolbo_tools: #{@user.toolbox_tools}"
+
+    if session[:current_toolbox]
+        @current_toolbox = Toolbox.find(session[:current_toolbox])
+        if !@current_toolbox.tools.include? @tool
+           @current_toolbox.tools <<@tool 
+           @current_toolbox.save
+        end
+    end
+
+    #logger.info "user #{@user}, tool #{@tool}, toolbo_tools: #{@user.toolbox_tools}"
     #@user.set_mark :toolbox, @tool
-    @user.tools << @tool
+    if !@user.tools.include? (@tool)
+        @user.tools << @tool 
+    end
     @user.save
 
     flash[:notice] = "Added Tool #{@tool.name} to #{@user.name}'s toolbox"

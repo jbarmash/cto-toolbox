@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312054608) do
+ActiveRecord::Schema.define(:version => 20120312072229) do
 
   create_table "marks", :id => false, :force => true do |t|
     t.integer  "marker_id"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20120312054608) do
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "toolboxes_tools", :id => false, :force => true do |t|
+    t.integer "tool_id"
+    t.integer "toolbox_id"
+  end
+
+  create_table "toolboxes_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "toolbox_id"
   end
 
   create_table "tools", :force => true do |t|

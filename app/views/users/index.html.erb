@@ -1,13 +1,13 @@
 <h1>Listing Users</h1>
 
-<table>
-  <tr>
+<table class="table">
+  <thead>
     <th>Name</th>
       <!--
     <th>Provider</th>
     <th>UID</th>
     -->
-  </tr>
+  </thead>
 
 <% @users.each do |user| %>
   <tr>
@@ -21,6 +21,8 @@
     <td>(<%= link_to "Set as current", user_set_current_user_path(user)%>)</td>
   </tr>
 <% end %>
+  <tfoot>
+  </tfoot>
 </table>
 
 <br />

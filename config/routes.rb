@@ -24,6 +24,7 @@ CtoToolbox::Application.routes.draw do
   resources :tags
 
   resources :tools
+  resources :toolboxes
   match 'tools_search' => 'Tools#search_by_name', :as => :tools_search_by_name, :via => "get"
   match 'mytools' => 'Tools#my_tools', :as => :my_tools, :via => "get"
 

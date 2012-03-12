@@ -6,16 +6,23 @@
 	  <ul class="nav pull-right">
 	        <%# link_to "Sign in with Twitter", "/auth/t" %>
 	        <li><%= link_to "All Tools",  tools_path %></li>
-	        <li><%= link_to "My Tools",  my_tools_path %></li>
-	        <li><%= link_to "Packages",  tools_path %></li>
+            <li><%= link_to "My Tools",  my_tools_path %></li>
+
+            <li><%= link_to "Toolboxes",  toolboxes_path %></li>
+            <% if session[:current_toolbox] 
+                current_toolbox = Toolbox.find(session[:current_toolbox])
+            %>
+            <li><%=link_to "Toolbox: (#{current_toolbox.name})", toolbox_path(current_toolbox) %></li>
+            <% end %>
+
             <li><%= link_to "Tags",    tags_path %></li>
             <li><%= link_to "Users",    users_path %></li>
               <% if session[:current_user] 
                  current_user = User.find(session[:current_user])
-          %>
+              %>
                   <li>  <%=link_to "Current User: #{current_user.name}", user_path(current_user) %></li>
               <% else %>
-                  <li><%= link_to "Sign in With Twitter", '#' %></li>
+                  <li><%= link_to "Sign in (In Progress)", '#' %></li>
               <% end %>
 
             </ul>

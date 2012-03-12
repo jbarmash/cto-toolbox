@@ -15,6 +15,8 @@ class ToolboxesController < ApplicationController
   def show
     @toolbox = Toolbox.find(params[:id])
 
+    session[:current_toolbox] = @toolbox.id
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @toolbox }
@@ -41,6 +43,10 @@ class ToolboxesController < ApplicationController
   # POST /toolboxes.json
   def create
     @toolbox = Toolbox.new(params[:toolbox])
+    @user = User.find(session[:current_user])
+    @user.toolboxes << @toolbox
+    @user.save
+    @toolbox.users << @user
 
     respond_to do |format|
       if @toolbox.save

@@ -8,7 +8,9 @@
 <p>
   <b>Description:</b>
   <%= @toolbox.description %>
-</p>
+  </p>
+
+
 
 <p>
   <b>Url:</b>
@@ -19,6 +21,22 @@
   <b>Type:</b>
   <%= @toolbox.type %>
 </p>
+
+<p>
+  <b>Users:</b>
+  <% @toolbox.users.each do |user| %>
+        <%= user.name %>, 
+  <% end %>
+  </p>
+
+<p>
+  <b>Tools:</b>
+  <% @toolbox.tools.each do |tool| %>
+        <%= tool.name %>, 
+  <% end %>
+  </p>
+
+
 
 
 <%= link_to 'Edit', edit_toolbox_path(@toolbox) %> |

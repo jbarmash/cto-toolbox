@@ -6,7 +6,18 @@
   </p>
 
 <p>
-  <b>Toolbox:</b>
+  <b>ToolBoxes / Stacks:</b>
+  <% if @user.toolboxes.exists? %>
+      <% @user.toolboxes.each do |toolbox| %>
+          <%= link_to toolbox.name, toolbox_path(toolbox) %> <br/> 
+      <% end %>
+  <% end %>
+</p>
+
+
+
+<p>
+  <b>Tools:</b>
   <% if @user.tools.exists? %>
       <% @user.tools.each do |tool| %>
    <hr>
@@ -27,9 +38,11 @@
 <% end %>
 <% else %>
       No Tools Defined Yet
-<% end %>
-</p>
+  <% end %>
 
+
+
+</p>
 
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
